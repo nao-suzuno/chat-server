@@ -22,7 +22,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	text := request.QueryStringParameters["text"]
 
-	openai := gpt.NewGpt("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", "gpt-3.5-turbo")
+	openai := gpt.NewGpt(os.Getenv("TOKEN"), "gpt-3.5-turbo")
 	chat := []gpt.Chat{
 		{
 			Role:    "user",
