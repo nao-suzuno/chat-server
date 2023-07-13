@@ -1,0 +1,39 @@
+service: chat-server
+frameworkVersion: '3'
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: ap-northeast-1
+  runtime: go1.x
+  tags:
+    env: ${opt:stage, 'dev'}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'ssm:*'
+          Resource: '*'
+        - Effect: "Allow"
+          Action:
+            - 'ec2:CreateNetworkInterface'
+            - 'ec2:DescribeNetworkInterfaces'
+            - 'ec2:DeleteNetworkInterface'
+          Resource: '*'
+  httpApi:
+    cors: true
+
+
+functions:
+  main:
+    name: main
+    handler: bin/main
+    memorySize: 128
+    timeout: 300
+    ephemeralStorageSize: 512
+    package:
+      include:
+        - ./bin/**
+    events:
+      - httpApi:
+          method: GET
+          path: /
