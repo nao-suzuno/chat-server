@@ -5,6 +5,10 @@ import (
 	gpt "chat-server/gpt"
   "github.com/aws/aws-lambda-go/events"
   "github.com/aws/aws-lambda-go/lambda"
+	
+	"golang.org/x/net/context"
+	speech "cloud.google.com/go/speech/apiv1"
+	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1"
 )
 
 type Response struct {
