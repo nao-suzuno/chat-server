@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"os"
 	gpt "chat-server/gpt"
   "github.com/aws/aws-lambda-go/events"
   "github.com/aws/aws-lambda-go/lambda"

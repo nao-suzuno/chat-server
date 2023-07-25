@@ -10,9 +10,6 @@ provider:
   iam:
     role:
       statements:
-        - Effect: Allow
-          Action: 'ssm:*'
-          Resource: '*'
         - Effect: "Allow"
           Action:
             - 'ec2:CreateNetworkInterface'
@@ -24,7 +21,7 @@ provider:
 
 
 functions:
-  main:
+  chat-server:
     name: main
     handler: bin/main
     memorySize: 128

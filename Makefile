@@ -8,3 +8,6 @@ build:
 # make clean
 clean:
 	rm -rf ./bin
+
+deploy:
+	sls deploy
